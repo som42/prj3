@@ -40,5 +40,11 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<c:if test="${not empty param.success}">
+    <script>
+      alert("게시물 수정되었습니다.");
+    </script>
+</c:if>
 </body>
 </html>
