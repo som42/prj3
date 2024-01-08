@@ -20,4 +20,10 @@ public class BoardService {
     public Board getBoard(Integer id) {
         return mapper.selectById(id);
     }
+
+    public boolean modify(Board board) {
+        int cnt = mapper.update(board);
+
+        return cnt == 1;
+    }
 }

@@ -3,6 +3,7 @@ package com.example.prj3.mapper;
 import com.example.prj3.domain.Board;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -22,4 +23,12 @@ public interface BoardMapper {
             WHERE id = #{id}
             """)
     Board selectById(Integer id);
+    @Update("""
+            UPDATE Board
+            SET title = #{title},
+                body = #{body},
+                writer = #{writer}
+            WHERE id = #{id}
+            """)
+    int update(Board board);
 }
