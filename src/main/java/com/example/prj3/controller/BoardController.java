@@ -69,12 +69,14 @@ public class BoardController {
     }
 
     @PostMapping("remove")
-    public String remove(Integer id) {
+    public String remove(Integer id, RedirectAttributes rttr) {
         boolean ok = service.remove(id);
         if (ok) {
-            return null;
+            rttr.addAttribute("success", "remove");
+            return "redirect:/list";
         } else {
-            return null;
+            rttr.addAttribute("fail", "fail");
+            return "redirect:/id/" + id;
         }
     }
 }
