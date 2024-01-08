@@ -33,7 +33,14 @@
     <div>
 <%--        수정 폼이 있는 곳으로 이동하기--%>
         <a class="btn btn-secondary" href="/modify/${board.id}">수정</a>
+        <button class="btn btn-danger" form="removeForm" type="submit">삭제</button>
     </div>
+</div>
+
+<div class="d-none">
+    <form action="/remove" method="post" id="removeForm">
+        <input type="text" name="id" value="${board.id}" />
+    </form>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

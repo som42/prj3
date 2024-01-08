@@ -67,4 +67,14 @@ public class BoardController {
             return "redirect:/modify" + board.getId();
         }
     }
+
+    @PostMapping("remove")
+    public String remove(Integer id) {
+        boolean ok = service.remove(id);
+        if (ok) {
+            return null;
+        } else {
+            return null;
+        }
+    }
 }
