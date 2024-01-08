@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,5 +34,16 @@ public class BoardController {
 
         // 4. forward/redirect
         return "list";
+    }
+
+    @GetMapping("/id/{id}")
+    public String board(@PathVariable("id") Integer id, Model model) {
+        // 1. request param
+        // 2. business logic
+        Board board = service.getBoard(id);
+        // 3. add attribute
+        model.addAttribute("board", board);
+        // 4. forward/redirect
+        return "get";
     }
 }

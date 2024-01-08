@@ -19,14 +19,19 @@
         </tr>
         </thead>
         <tbody>
-            <c:forEach items="${boardList}" var="board">
-                <tr>
-                    <td>${board.id}</td>
-                    <td>${board.title}</td>
-                    <td>${board.writer}</td>
-                    <td>${board.inserted}</td>
-                </tr>
-            </c:forEach>
+        <c:forEach items="${boardList}" var="board">
+            <tr>
+                <td>${board.id}</td>
+                <td>
+<%--                    클릭하면 경로 넘어 가게 하는거--%>
+                    <a href="/id/${board.id}">
+                            ${board.title}
+                    </a>
+                </td>
+                <td>${board.writer}</td>
+                <td>${board.inserted}</td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </div>
