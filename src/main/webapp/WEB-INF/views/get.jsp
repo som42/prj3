@@ -21,23 +21,32 @@
 <my:navBar/>
 
 <div class="container-lg">
-    <h1>${board.id}번 게시물 보기</h1>
-    <div>
-        제목 : ${board.title}
-    </div>
-    <div>
-        본문 : <div>${board.body}</div>
-    </div>
-    <div>
-        작성자 : ${board.writer}
-    </div>
-    <div>
-        작성일시 : ${board.inserted}
-    </div>
-    <div>
-<%--        수정 폼이 있는 곳으로 이동하기--%>
-        <a class="btn btn-secondary" href="/modify/${board.id}">수정</a>
-        <button id="removeButton" class="btn btn-danger" form="removeForm" type="submit">삭제</button>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+
+            <h1>${board.id}번 게시물</h1>
+            <div>
+                <div class="mb-3">
+                    <label for="" class="form-label">제목</label>
+                    <input type="text" class="form-control" value="${board.title}" readonly/>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">본문</label>
+                <textarea class="form-control" rows="10" readonly>${board.body}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">작성자</label>
+                <input type="text" class="form-control" value="${board.writer}" readonly/>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">작성일시</label>
+                <input type="text" readonly="" class="form-control" value="${board.inserted}"/>
+            </div>
+            <%--        수정 폼이 있는 곳으로 이동하기--%>
+            <a class="btn btn-secondary" href="/modify/${board.id}">수정</a>
+            <button id="removeButton" class="btn btn-danger" form="removeForm" type="submit">삭제</button>
+        </div>
     </div>
 </div>
 

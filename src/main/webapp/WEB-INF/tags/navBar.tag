@@ -3,10 +3,30 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
+<style>
+    /* 네비게이션 바를 위한 사용자 정의 스타일 */
+    .navbar {
+        background-color: #ffd9e6; /* 연한 핑크 배경색상 */
+        border-radius: 10px; /* 네비게이션 바의 모서리를 둥글게 만듭니다. */
+        font-family: 'Noto Sans KR', sans-serif; /* 한글을 위한 글꼴 지정 */
+    }
+
+    .nav-link {
+        border-radius: 5px; /* 네비게이션 링크의 모서리를 둥글게 만듭니다. */
+        font-weight: bold; /* 글꼴을 굵게 설정합니다. */
+    }
+
+    .nav-link.active {
+        color: #ffffff; /* 활성 링크의 텍스트 색상을 흰색으로 설정 */
+        background-color: #ff66b2; /* 활성 링크의 배경 색상을 조금 더 진한 핑크로 설정 */
+        border-radius: 5px; /* 활성 링크에 둥근 모서리 추가 */
+    }
+</style>
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary mb-5">
     <div class="container-lg">
         <a class="navbar-brand" href="/list">
-            <img src="/img/spring-logo.svg" alt="" height="24" />
+            리아게시판
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
