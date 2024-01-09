@@ -1,10 +1,7 @@
 package com.example.prj3.mapper;
 
 import com.example.prj3.domain.Board;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -38,4 +35,11 @@ public interface BoardMapper {
             WHERE id = #{id}
             """)
     int deleteById(Integer id);
+
+    @Insert("""
+            INSERT INTO Board (title, body, writer)
+            VALUES (#{title}, #{body}, #{writer})
+            """)
+    @Options(useGeneratedKeys = true, keyProperty = "id") //바로 입력 하자마자 키를 알고 싶을때
+    int insert(Board board);
 }

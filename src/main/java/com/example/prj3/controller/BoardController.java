@@ -86,7 +86,19 @@ public class BoardController {
     }
 
     @PostMapping("add")
-    public void addProcess(){
+    public String addProcess(Board board, RedirectAttributes rttr){
         // 새 게시물  db에 추가
+        // 1.
+        // 2.
+        boolean ok = service.addBoard(board);
+        // 3.
+        // 4.
+        if (ok) {
+            return "redirect:/id/" + board.getId();
+//            등록이 잘되면 내가 쓴글로 다시 가고싶다.
+        } else {
+            rttr.addFlashAttribute("board", board);
+            return "redirect:/add";
+        }
     }
 }
