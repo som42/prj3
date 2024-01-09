@@ -23,7 +23,6 @@ public class BoardService {
 
     public boolean modify(Board board) {
         int cnt = mapper.update(board);
-
         return cnt == 1;
     }
 
@@ -34,7 +33,6 @@ public class BoardService {
 
     public boolean addBoard(Board board) {
         int cnt = mapper.insert(board);
-
         return cnt == 1;
     }
 }

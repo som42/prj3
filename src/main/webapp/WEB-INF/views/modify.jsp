@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="my" tagdir="/WEB-INF/tags"%>
 <html>
 <head>
     <title>Title</title>
@@ -15,6 +16,9 @@
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 </head>
 <body>
+
+<my:navBar/>
+
 <div class="container-lg">
     <h1>${board.id} 게시물 수정</h1>
     <form method="post">
