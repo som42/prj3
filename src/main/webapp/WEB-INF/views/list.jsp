@@ -9,6 +9,8 @@
 <body>
 <my:navBar current="list"/>
 
+<my:alert></my:alert>
+
 <div class="container-lg">
 <h1>게시물 목록 보기</h1>
 <%--    table.table>thead>tr>th4*^^tbody--%>
@@ -41,10 +43,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-<c:if test="${param.success eq 'remove'}">
-    <script>
-        alert("게시물이 삭제 되었습니다.");
-    </script>
-</c:if>
+
 </body>
 </html>

@@ -14,6 +14,7 @@
 <body>
 
 <my:navBar current="add" />
+<my:alert></my:alert>
 
 <div class="container-lg">
 

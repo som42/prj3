@@ -19,6 +19,7 @@
 <body>
 
 <my:navBar/>
+<my:alert></my:alert>
 
 <div class="container-lg">
     <div class="row justify-content-center">
@@ -74,10 +75,6 @@
       }
     });
 </script>
-<c:if test="${not empty param.success}">
-    <script>
-      alert("게시물 수정되었습니다.");
-    </script>
-</c:if>
+
 </body>
 </html>
