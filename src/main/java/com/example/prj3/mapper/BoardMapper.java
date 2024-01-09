@@ -42,4 +42,12 @@ public interface BoardMapper {
             """)
     @Options(useGeneratedKeys = true, keyProperty = "id") //바로 입력 하자마자 키를 알고 싶을때
     int insert(Board board);
+
+    @Select("""
+            SELECT id, title, writer, inserted
+            FROM Board
+            ORDER BY id DESC 
+            LIMIT #{startIndex}, 10
+            """)
+    List<Board> selectAllPaging(Integer startIndex);
 }

@@ -23,10 +23,11 @@ public class BoardController {
     // 게시물 목록
     // @RequestMapping(value = {"/", "list"}, method = RequestMethod.GET)
     @GetMapping({"/", "list"})
-    public String list(Model model){
+    public String list(Model model, @RequestParam(value = "page", defaultValue = "1") Integer page){
         // 1. request param 수집/가공
         // 2. business login 처리
-       List<Board> list = service.listBoard();
+        // List<Board> list = service.listBoard(); // 페이지 처리 전
+        List<Board> list = service.listBoard(page); // 페이지 처리
         // 3. add attribute
         model.addAttribute("boardList", list);
 
