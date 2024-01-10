@@ -4,12 +4,15 @@ import com.example.prj3.domain.Board;
 import com.example.prj3.mapper.BoardMapper;
 import com.example.prj3.service.BoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/")
@@ -23,13 +26,18 @@ public class BoardController {
     // 게시물 목록
     // @RequestMapping(value = {"/", "list"}, method = RequestMethod.GET)
     @GetMapping({"/", "list"})
-    public String list(Model model, @RequestParam(value = "page", defaultValue = "1") Integer page){
+    public String list(Model model,
+                       @RequestParam(value = "page", defaultValue = "1") Integer page,
+                       @RequestParam(value = "search", defaultValue = "")String search){
         // 1. request param 수집/가공
         // 2. business login 처리
         // List<Board> list = service.listBoard(); // 페이지 처리 전
-        List<Board> list = service.listBoard(page); // 페이지 처리
-        // 3. add attribute
-        model.addAttribute("boardList", list);
+        Map<String, Object> result = service.listBoard(page, search); // 페이지 처리
+
+        // 3. add attribute 위에 두개를 밑에 한개로 대신 쓸수 있다.
+//        model.addAttribute("boardList", result.get("boardList"));
+//        model.addAttribute("pageInfo", result.get("pageInfo"));
+        model.addAllAttributes(result);
 
         // 4. forward/redirect
         return "list";

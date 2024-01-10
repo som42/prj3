@@ -26,7 +26,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary mb-5">
     <div class="container-lg">
         <a class="navbar-brand" href="/list">
-            리아게시판
+            <img src="/img/spring-logo.png" alt="" height="24"/>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -73,8 +73,8 @@
                     </li>
                 </sec:authorize>
             </ul>
-            <form action="/list" class="d-flex" role="search">
 
+            <form action="/list" class="d-flex" role="search">
                 <div class="input-group">
                     <select class="form-select flex-grow-0" style="width: 100px;" name="type" id="">
                         <option value="all">전체</option>
