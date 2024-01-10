@@ -28,11 +28,12 @@ public class BoardController {
     @GetMapping({"/", "list"})
     public String list(Model model,
                        @RequestParam(value = "page", defaultValue = "1") Integer page,
-                       @RequestParam(value = "search", defaultValue = "")String search){
+                       @RequestParam(value = "search", defaultValue = "")String search,
+                       @RequestParam(value = "type", required = false) String type){
         // 1. request param 수집/가공
         // 2. business login 처리
         // List<Board> list = service.listBoard(); // 페이지 처리 전
-        Map<String, Object> result = service.listBoard(page, search); // 페이지 처리
+        Map<String, Object> result = service.listBoard(page, search, type); // 페이지 처리
 
         // 3. add attribute 위에 두개를 밑에 한개로 대신 쓸수 있다.
 //        model.addAttribute("boardList", result.get("boardList"));

@@ -13,7 +13,7 @@ public class BoardService {
     @Autowired
     private BoardMapper mapper;
 
-    public Map<String, Object> listBoard(Integer page, String search){
+    public Map<String, Object> listBoard(Integer page, String search, String type){
         //페이지당 행의 수
         Integer rowPerPage = 10;
 
@@ -21,7 +21,7 @@ public class BoardService {
         Integer startIndex = (page - 1) * rowPerPage; //한페이지에 몇개 보여줄지 곱하면된다.
 
         // 페이지네이션이 필요한 정보
-        Integer numOfRecords = mapper.countAll(); //전체 레코드 갯수
+        Integer numOfRecords = mapper.countAll(search, type); //전체 레코드 갯수
 
         // 마지막 페이지 번호
         Integer lastPageNumber = (numOfRecords - 1) / rowPerPage + 1;
@@ -43,7 +43,7 @@ public class BoardService {
         pageInfo.put("lastPageNum", lastPageNumber);
 
         // 게시물 목록
-        List<Board> list =  mapper.selectAllPaging(startIndex, rowPerPage, search);
+        List<Board> list =  mapper.selectAllPaging(startIndex, rowPerPage, search, type);
 
         return Map.of("pageInfo", pageInfo, "boardList", list);
     }
