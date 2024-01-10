@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -101,11 +103,12 @@ public class BoardController {
     }
 
     @PostMapping("add")
-    public String addProcess(Board board, RedirectAttributes rttr){
+    public String addProcess(Board board, RedirectAttributes rttr,
+                             @RequestParam("files")MultipartFile[] files) throws IOException {
         // 새 게시물  db에 추가
         // 1.
         // 2.
-        boolean ok = service.addBoard(board);
+        boolean ok = service.addBoard(board, files);
         // 3.
         // 4.
         if (ok) {

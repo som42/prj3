@@ -4,10 +4,15 @@ import com.example.prj3.domain.Board;
 import com.example.prj3.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.*;
 
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class BoardService {
 
     @Autowired
@@ -63,8 +68,29 @@ public class BoardService {
         return cnt == 1;
     }
 
-    public boolean addBoard(Board board) {
+    public boolean addBoard(Board board, MultipartFile[] files) throws IOException {
+        //게시물  insert
         int cnt = mapper.insert(board);
+
+        for (MultipartFile file : files){
+            if (file.getSize() > 0){
+                // 파일 저장
+                String folder = "C:\\study\\upload\\" + board.getId();
+                File targetFolder = new File(folder);
+                if (!targetFolder.exists()){
+                    // 자기 폴더가 존재 하지 않으면 게시물 번호도 폴더를 만들어라.
+                    targetFolder.mkdirs();
+                }
+
+                String path = "C:\\study\\upload\\" + board.getId() + "\\" + file.getOriginalFilename();
+                File target = new File(path);
+                file.transferTo(target);
+                // db에 관련 정보 저장(insert)
+                mapper.insertFileName(board.getId(), file.getOriginalFilename());
+
+            }
+        }
+
         return cnt == 1;
     }
 }

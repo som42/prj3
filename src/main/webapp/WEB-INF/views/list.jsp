@@ -50,46 +50,23 @@
                 <!-- 이전 버튼 -->
 <%--                1이 아닐때 보여주면 된다는 뜻 --%>
                 <c:if test="${pageInfo.currentPageNum gt 1 }">
-                    <c:url value="/list" var="pageLink">
-                        <c:param name="page" value="${pageInfo.currentPageNum - 1}"/>
-                        <c:if test="${not empty param.search}">
-                            <c:param name="search" value="${param.search}"/>
-                        </c:if>
-                    </c:url>
-                    <li class="page-item">
-                        <a class="page-link" href="${pageLink}">
-                            <i class="fa-solid fa-angle-left"></i>
-                        </a>
-                    </li>
+                    <my:pageItem pageNum="${pageInfo.currentPageNum - 1}">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </my:pageItem>
                 </c:if>
 
                 <c:forEach begin="${pageInfo.leftPageNum}" end="${pageInfo.rightPageNum}" var="pageNum">
-                    <c:url value="/list" var="pageLink">
-                        <c:param name="page" value="${pageNum}"/>
-                        <c:if test="${not empty param.search}">
-                            <c:param name="search" value="${param.search}"/>
-                        </c:if>
-                    </c:url>
-                    <li class="page-item">
-                        <a class="page-link ${pageNum eq pageInfo.currentPageNum ? 'active' : ''}"
-                           href="${pageLink}">${pageNum}</a>
-                    </li>
+<%--                    이거 쓸려면  attribute명시해줘야 쓸수 있다.--%>
+                    <my:pageItem pageNum="${pageNum}">${pageNum}</my:pageItem>
                 </c:forEach>
 
                 <!-- 다음 버튼-->
 <%--                마지막 페이지보다 작을 때 나오게 한다--%>
                 <c:if test="${pageInfo.currentPageNum lt pageInfo.lastPageNum}">
-                    <c:url value="/list" var="pageLink">
-                        <c:param name="page" value="${pageInfo.currentPageNum + 1}"/>
-                        <c:if test="${not empty param.search}">
-                            <c:param name="search" value="${param.search}"/>
-                        </c:if>
-                    </c:url>
-                    <li class="page-item">
-                        <a class="page-link" href="${pageLink}">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </a>
-                    </li>
+                    <%-- 페이지 번호 : ${pageInfo.currentPageNum +  1} --%>
+                    <my:pageItem pageNum="${pageInfo.currentPageNum + 1}">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </my:pageItem>
                 </c:if>
 
             </ul>

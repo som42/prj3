@@ -21,6 +21,7 @@
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 col-lg-6">
             <h1>게시물 작성</h1>
+
             <form method="post" enctype="multipart/form-data">
                 <div class="mb-3">
                     <label for="titleInput" class="form-label">제목</label>
@@ -30,7 +31,6 @@
                     <label for="bodyTextarea" class="form-label">본문</label>
                     <textarea rows="10" id="bodyTextarea" class="form-control" name="body">${board.body }</textarea>
                 </div>
-
                 <div class="mb-3">
                     <label for="fileInput" class="form-label">그림 파일</label>
                     <input class="form-control" type="file" id="fileInput" name="files" accept="image/*" multiple>
@@ -38,11 +38,11 @@
                         총 10MB, 하나의 파일은 1MB를 초과할 수 없습니다.
                     </div>
                 </div>
-
                 <div class="mb-3">
                     <input class="btn btn-primary" type="submit" value="등록" />
                 </div>
             </form>
+
         </div>
     </div>
 </div>
