@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.prj3.mapper.BoardMapper">
+<!--    type는 board에서 들고온거니 거기서 참조복사 해오면 된다.-->
+    <resultMap id="boardResultMap" type="com.example.prj3.domain.Board">
+<!--        column이름은 쿼리에서 가져옴 property board 에서 들고옴-->
+<!--        key역활을 하는 컬럼은 result 대신 id라고 해주는게 좋다.-->
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="body" property="body"/>
+        <result column="inserted" property="inserted"/>
+        <result column="writer" property="writer"/>
+<!--        여러 값이 하나의 property매칭되면 collection로 써주면된다.-->
+<!--        애는 자바 빈에 있는 프로퍼티 명 -->
+        <collection property="fileName" ofType="String" >
+<!--            조회 명에 있는 프로퍼티 명-->
+            <result column="fileName"/>
+        </collection>
+    </resultMap>
+</mapper>

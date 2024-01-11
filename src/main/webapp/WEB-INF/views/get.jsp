@@ -33,6 +33,17 @@
                     <input type="text" class="form-control" value="${board.title}" readonly/>
                 </div>
             </div>
+
+            <!-- 그림 파일 -->
+            <div class="mb-3">
+                <c:forEach items="${fileNameList}" var="fileName">
+                    <div>
+                        <%-- localhost:8081/image/게시물번호/fileName --%>
+                        <img src="http://localhost:8081/image/${board.id}/${fileName}" alt=""/>
+                    </div>
+                </c:forEach>
+            </div>
+
             <div class="mb-3">
                 <label for="" class="form-label">본문</label>
                 <textarea class="form-control" rows="10" readonly>${board.body}</textarea>

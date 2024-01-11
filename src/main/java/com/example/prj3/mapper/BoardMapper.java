@@ -16,10 +16,14 @@ public interface BoardMapper {
     List<Board> selectAll();
 
     @Select("""
-            SELECT *
-            FROM Board
-            WHERE id = #{id}
+            SELECT b.id, b.title, b.body, b.inserted, b.writer, f.fileName
+            FROM Board b 
+            LEFT JOIN FileName f 
+            ON b.id = f.boardId
+            WHERE b.id = #{id}
             """)
+//    resultMap 을 사용하라는 의미가 @ResultMap 명시해주면 된다.
+    @ResultMap("boardResultMap ")
     Board selectById(Integer id);
     @Update("""
             UPDATE Board
