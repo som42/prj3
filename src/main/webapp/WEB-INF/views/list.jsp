@@ -30,9 +30,11 @@
                 <td>${board.id}</td>
                 <td>
 <%--                    클릭하면 경로 넘어 가게 하는거--%>
-                    <a href="/id/${board.id}">
-                            ${board.title}
-                    </a>
+                    <a href="/id/${board.id}">${board.title}</a>
+                    <span class="badge rounded-pill text-bg-info">
+                            ${board.fileCount}
+                    </span>
+
                 </td>
                 <td>${board.writer}</td>
                 <td>${board.inserted}</td>

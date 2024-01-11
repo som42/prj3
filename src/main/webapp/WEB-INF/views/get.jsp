@@ -36,7 +36,7 @@
 
             <!-- 그림 파일 -->
             <div class="mb-3">
-                <c:forEach items="${fileNameList}" var="fileName">
+                <c:forEach items="${board.fileName }" var="fileName">
                     <div>
                         <%-- localhost:8081/image/게시물번호/fileName --%>
                         <img src="http://localhost:8081/image/${board.id}/${fileName}" alt=""/>
